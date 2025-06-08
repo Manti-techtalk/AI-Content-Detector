@@ -21,7 +21,6 @@ class PredictTextAPIView(APIView):
             prediction = model.predict([input_text])[0]
             proba = model.predict_proba([input_text])[0]
             confidence = max(proba)
-
             # Save to DB
             record = TextPrediction.objects.create(
                 input_text=input_text,
@@ -29,7 +28,7 @@ class PredictTextAPIView(APIView):
             )
 
             return Response({
-                "result": "Human" if prediction else "AI",
+                "result": "AI" if prediction else "Human",
                 "confidence": round(confidence * 100, 2),
                 "id": record.id
             })
