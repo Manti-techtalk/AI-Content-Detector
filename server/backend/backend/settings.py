@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'api'
 ]
 
 MIDDLEWARE = [
@@ -85,7 +87,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'text_prediction',
         'USER': 'postgres',
-        'PASSWORD': password,
+        'PASSWORD': os.getenv('password'),
         'HOST': 'localhost',
         'PORT': '5432',
     }
