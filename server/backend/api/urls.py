@@ -1,8 +1,8 @@
 from django.urls import path,include
 from django.http import HttpResponse
-from api.views import api_home, PredictTextAPIView
+from api.views import  PredictTextAPIView
 
 urlpatterns = [
-    path('',api_home ),
+    path('', lambda request: HttpResponse("<h1>Testing Home API</h1> ")),
     path('predict/', PredictTextAPIView.as_view(), name='predict'),
 ]
