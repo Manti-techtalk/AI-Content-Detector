@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# Load model once
+
 model_path = os.getenv('path')
 model = load(model_path)
 class PredictTextAPIView(APIView):
@@ -21,7 +21,7 @@ class PredictTextAPIView(APIView):
             prediction = model.predict([input_text])[0]
             proba = model.predict_proba([input_text])[0]
             confidence = max(proba)
-            # Save to DB
+           
             record = TextPrediction.objects.create(
                 input_text=input_text,
                 prediction=bool(prediction)
